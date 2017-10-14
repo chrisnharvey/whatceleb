@@ -9,29 +9,27 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-export default class App extends Component<{}> {
+export default class Welcome extends Component<{}> {
   render() {
+    const { navigate } = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to WhatCeleb!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit App.js
+          Tap the button below to take a photo of a celebrity that you want to identifty.
         </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <Button
+          onPress={() => navigate('TakePhoto')}
+          title="Take Photo"
+          accessibilityLabel="Learn more about this purple button"
+        />
       </View>
     );
   }
@@ -52,6 +50,6 @@ const styles = StyleSheet.create({
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    marginBottom: 15,
   },
 });
