@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 import Welcome from './Welcome';
 import TakePhoto from './TakePhoto';
+import Profile from './Profile';
 
 const WhatCeleb = StackNavigator({
   Welcome: { screen: Welcome },
-  TakePhoto: { screen: TakePhoto }
+  TakePhoto: { screen: TakePhoto },
+  Profile: { screen: Profile }
 }, {
   headerMode: 'none'
 });
