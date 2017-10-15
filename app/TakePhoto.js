@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
+import Toast, {DURATION} from 'react-native-easy-toast'
 import Spinner from 'react-native-loading-spinner-overlay';
 import Camera from 'react-native-camera';
 
@@ -31,6 +32,11 @@ export default class TakePhoto extends Component {
           aspect={Camera.constants.Aspect.fill}>
           <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[WHO IS THIS]</Text>
         </Camera>
+        <Toast
+          ref="toast"
+          style={{backgroundColor:'red'}}
+          position='top'
+        />
         <Spinner overlayColor="rgba(0, 0, 0, 0.9)" visible={this.state.loading} textStyle={{color: '#FFF'}} />
       </View>
     );
