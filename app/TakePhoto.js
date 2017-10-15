@@ -11,6 +11,7 @@ import {
 import Toast, {DURATION} from 'react-native-easy-toast'
 import Spinner from 'react-native-loading-spinner-overlay';
 import Camera from 'react-native-camera';
+import Config from 'react-native-config'
 
 export default class TakePhoto extends Component {
   constructor(props) {
@@ -44,12 +45,42 @@ export default class TakePhoto extends Component {
 
   takePicture() {
     const options = {};
-    //options.location = ...
+    const { navigate } = this.props.navigation;    
+
+    this.setState(() => {
+      return {
+        loading: true
+      }
+    })
+
     this.camera.capture({metadata: options})
       .then((data) => {
-        this.setState(() => {
-          return {
-            loading: true
+        let form = new FormData;
+        form.append('photo', {
+          uri: data.path,
+          name: 'photo.jpg',
+          type: 'image/jpg'
+        })
+
+        fetch(Config.API_URL + '/find', {
+          method: 'POST',
+          body: form,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'X-WhatCeleb-Auth': Config.API_TOKEN
+          }
+        })
+        .then(response => {
+          this.setState(() => {
+            return {
+              loading: false
+            }
+          })
+
+          if (response.status != 200) {
+            this.refs.toast.show('Sorry, not sure who that is.', DURATION.LENGTH_LONG);
+          } else {
+            response.json().then(json => navigate('Profile', json.profile));
           }
         })
       })
