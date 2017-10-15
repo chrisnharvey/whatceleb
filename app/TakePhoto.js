@@ -29,7 +29,7 @@ export default class TakePhoto extends Component {
           style={styles.preview}
           captureQuality="480p"
           aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[WHO IS THIS]</Text>
         </Camera>
         <Spinner overlayColor="rgba(0, 0, 0, 0.9)" visible={this.state.loading} textStyle={{color: '#FFF'}} />
       </View>
