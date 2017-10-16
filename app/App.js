@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation';
 import Welcome from './Welcome';
 import TakePhoto from './TakePhoto';
 import Profile from './Profile';
+import Orientation from 'react-native-orientation';
 
 const WhatCeleb = StackNavigator({
   Welcome: { screen: Welcome },
@@ -15,5 +16,9 @@ const WhatCeleb = StackNavigator({
 export default class App extends Component<{}> {
   render() {
     return <WhatCeleb />;
+  }
+
+  componentDidMount() {
+    Orientation.lockToPortrait();
   }
 }
