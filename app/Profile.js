@@ -98,18 +98,28 @@ export default class Profile extends Component<{}> {
           </View>
         </HeaderImageScrollView>
 
-        <AdMobBanner
-          adSize="smartBannerPortrait"
-          adUnitID={Config.AD_UNIT_ID}
-          testDevices={[AdMobBanner.simulatorId]}
-          onAdFailedToLoad={error => console.error(error)}
-        />
+        <View style={styles.adContainer}>
+          <AdMobBanner
+            style={styles.ad}
+            adSize="banner"
+            adUnitID={Config.AD_UNIT_ID}
+            testDevices={[AdMobBanner.simulatorId]}
+            onAdFailedToLoad={error => console.error(error)}
+          />
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  adContainer: {
+    backgroundColor: '#fff',
+    alignItems: 'center'
+  },
+  ad: {
+    backgroundColor: '#fff'
+  },
   textContainer: {
     flex: 1,
   },
