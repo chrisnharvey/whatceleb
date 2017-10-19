@@ -7,7 +7,8 @@ import {
   Text,
   View,
   Image,
-  Dimensions
+  Button,
+  Linking
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
@@ -67,10 +68,15 @@ export default class Profile extends Component<{}> {
             onHide={() => this.navTitleView.fadeInUp(200)}
             onDisplay={() => this.navTitleView.fadeOut(100)}
           >
-            <Text style={styles.title}>
-              <Text style={styles.name}>{state.params.name}</Text>
-            </Text>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style={styles.title}>
+                <Text style={styles.name}>{state.params.name}</Text>
+              </Text>
+
+              <Button title="IMDb" onPress={() => Linking.openURL(state.params.imdb_url)} />
+            </View>
           </TriggeringView>
+
           <View style={styles.section}>
               <Text style={styles.sectionTitle}>Biography</Text>
             
