@@ -7,7 +7,10 @@ import {
   Text,
   View,
   Image,
+  Dimensions,
+  FlatList,
   Button,
+  TouchableHighlight,
   Linking
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
@@ -93,6 +96,24 @@ export default class Profile extends Component<{}> {
           </View>
 
           <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Photos</Text>
+
+            <FlatList
+              data={state.params.images}
+              horizontal={true}
+              keyExtractor={(item, index) => index}
+              renderItem={(item) => (
+                <TouchableHighlight onPress={() => navigate('Photos', {images: state.params.images, selectedImage: item.index})}>
+                  <Image
+                    source={{uri: item.item}}
+                    style={styles.photoThumb}
+                  />
+                </TouchableHighlight>
+              )}
+            />
+          </View>
+
+          <View style={styles.section}>
               <Text style={styles.sectionTitle}>Known For</Text>
               {movies}
           </View>
@@ -149,7 +170,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
     height: StyleSheet.hairlineWidth,
     marginLeft: 4,
-},
+  },
   navTitleView: {
     height: 65,
     justifyContent: 'center',
@@ -198,5 +219,13 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: 'transparent',
     fontSize: 24,
+  },
+  photos: {
+    height:100
+  },
+  photoThumb: {
+    height: 100,
+    width: 100,
+    padding: 1
   }
 });
