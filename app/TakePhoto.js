@@ -3,7 +3,7 @@ import {
   AppRegistry,
   Dimensions,
   StyleSheet,
-  Text,
+  Image,  
   TouchableHighlight,
   View
 } from 'react-native';
@@ -30,7 +30,14 @@ export default class TakePhoto extends Component {
           style={styles.preview}
           captureQuality="720p"
           aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[WHO IS THIS]</Text>
+          <TouchableHighlight
+            onPress={this.takePicture.bind(this)}
+          >
+            <Image
+              source={require('../assets/takephoto.png')}
+              style={styles.capture}
+            />
+          </TouchableHighlight>
         </Camera>
         <Toast
           ref="toast"
@@ -99,10 +106,8 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
+    width: 100,
+    height: 100,
+    resizeMode: 'cover'
   }
 });
