@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  Image
 } from 'react-native';
 
 export default class Welcome extends Component<{}> {
@@ -13,9 +14,9 @@ export default class Welcome extends Component<{}> {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to WhatCeleb!
-        </Text>
+        <View style={styles.backgroundImageWrapper}>
+          <Image source={require('../assets/splash.png')} style={styles.backgroundImage} />
+        </View>
         <Text style={styles.instructions}>
           Tap the button below to take a photo of a celebrity that you want to identifty.
         </Text>
@@ -30,20 +31,29 @@ export default class Welcome extends Component<{}> {
 }
 
 const styles = StyleSheet.create({
+  backgroundImageWrapper: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
+  backgroundImage: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
+    color: '#fff',
     marginBottom: 15,
+    width: 330
   },
 });
