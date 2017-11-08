@@ -30,11 +30,14 @@ export default class TakePhoto extends Component {
           style={styles.preview}
           captureQuality="720p"
           aspect={Camera.constants.Aspect.fill}>
+          
           <TouchableHighlight
+            activeOpacity={0.5}
+            underlayColor={'transparent'}
             onPress={this.takePicture.bind(this)}
           >
             <Image
-              source={require('../assets/takephoto.png')}
+              source={require('../../assets/takephoto.png')}
               style={styles.capture}
             />
           </TouchableHighlight>
@@ -50,8 +53,7 @@ export default class TakePhoto extends Component {
   }
 
   takePicture() {
-    const options = {};
-    const { navigate } = this.props.navigation;    
+    const {navigate} = this.props.navigation;    
 
     this.setState(() => {
       return {
@@ -59,7 +61,7 @@ export default class TakePhoto extends Component {
       }
     })
 
-    this.camera.capture({metadata: options})
+    this.camera.capture()
       .then((data) => {
         let form = new FormData;
         form.append('photo', {

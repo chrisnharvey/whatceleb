@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import Gallery from 'react-native-image-gallery';
 
-export default class Photos extends Component<{}> {    
+export default class Photos extends Component {    
   render() {
-    const {state} = this.props.navigation;
+    const { state } = this.props.navigation;
 
     let images = [];
 
     for (var image of state.params.images) {
-        images.push({
-            source: {
-                uri: image
-            }
-        })
+      images.push({
+         source: {
+          uri: image
+        }
+      })
     }
 
     return (

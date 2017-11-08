@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
-import Welcome from './Welcome';
-import TakePhoto from './TakePhoto';
-import Profile from './Profile';
-import Photos from './Photos';
+import Welcome from './screens/Welcome';
+import TakePhoto from './screens/TakePhoto';
+import Profile from './screens/Profile';
+import Photos from './screens/Photos';
 import Orientation from 'react-native-orientation';
 
 const WhatCeleb = StackNavigator({
