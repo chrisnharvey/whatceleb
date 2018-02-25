@@ -26,7 +26,7 @@ export default class Profile extends Component {
 
     for (var movie of state.params.known_for) {
       movies.push(
-        <Movie movie={movie} />
+        <Movie key={movie.imdb_id} movie={movie} type="known_for" />
       )
     }
 
