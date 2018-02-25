@@ -13,11 +13,8 @@ import Camera from 'react-native-camera';
 import Config from 'react-native-config'
 
 export default class TakePhoto extends Component {
-  constructor(props) {
-    super();
-    this.state = {
-      loading: false
-    };
+  state = {
+    loading: false
   }
 
   render() {
